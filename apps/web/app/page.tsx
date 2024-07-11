@@ -50,7 +50,7 @@ export default function Home() {
 
 
 
-export function FloatingNavDemo() {
+function FloatingNavDemo() {
   const navItems = [
     {
       name: "Home",
