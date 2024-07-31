@@ -1,9 +1,5 @@
 import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
-dotenv.config();
-declare global {
-  var _mongoClientPromise: Promise<any>;
-}
+var mongoClientPromise;
 
 export async function connectToMongoDB() {
   try {
@@ -11,7 +7,6 @@ export async function connectToMongoDB() {
     const options = {};
 
     let client;
-    let mongoClientPromise: Promise<any>;
 
     if (!MONGODB_ATLAS_URI) {
       throw new Error("Please add your Mongo URI to .env.local");

@@ -33,7 +33,6 @@ Smt. Droupadi Murmu | [The President of India](https://presidentofindia.nic.in/)
 
 ### [Director's Desk](https://iiitranchi.ac.in/director_Desk.aspx)
 
-
 Prof. Rajeev Srivastava
 Director | IIIT Ranchi
 [ director@iiitranchi.ac.in](mailto:director@iiitranchi.ac.in)
