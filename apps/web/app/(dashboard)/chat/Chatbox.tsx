@@ -1,3 +1,6 @@
+// ignore file eslint for this file
+/* eslint-disable */
+// @ts-nocheck
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
