@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": " nodemon --env-file=.env src/index.js",
-    "start": "ENV=prod node src/index.js",
+    "start": "node --env src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
