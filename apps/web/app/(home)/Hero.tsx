@@ -13,7 +13,7 @@ function Hero() {
           <HoverBorderGradient
             containerClassName="rounded-full"
             as="button"
-            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+            className="dark:bg-gray-900  bg-white text-black dark:text-white flex items-center space-x-2"
           >
             <Github />
             <Link
@@ -24,7 +24,7 @@ function Hero() {
             </Link>
           </HoverBorderGradient>
         </div>
-        <div className="text-6xl sm:text-9xl font-bold z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+        <div className="text-6xl sm:text-9xl font-bold z-20 bg-clip-text text-transparent bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] text-transparent   py-8 ">
           iiitr.insights
         </div>
         <div className="h-16 sm:h-24">
@@ -36,9 +36,9 @@ function Hero() {
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="button"
-              className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+              className="dark:bg-gray-900 bg-white text-black dark:text-white flex items-center space-x-2"
             >
-              <Link href="/chat" className="flex items-center gap-1 ">
+              <Link href="/chat/fwef" className="flex items-center gap-1 ">
                 Chat Now
                 <div className="flex overflow-hidden relative justify-center items-center ml-1 w-5 h-5">
                   <ArrowUpRight className="absolute transition-all duration-500 group-hover:translate-x-4 group-hover:-translate-y-5" />

@@ -1,16 +1,18 @@
 import React from "react";
-import Header from "./header/Header";
-import { ChatCaptionName } from "./header/ChatCaptionName";
+import IIITRChatbot from "./(header)/Chatbox";
+
+
 
 function ChatLayout({ Children }: { Children: React.ReactNode }) {
   return (
-    <section>
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_65%,black)]"></div>
+    <section className="w-full">
+      {/* <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_65%,black)]"></div>
       <div className="min-h-screen w-[60%] mx-auto">
-        <Header />
-        <ChatCaptionName/>
+        <Header text="Ask me Anything about IIIT Ranchi" />
+     
         {Children}
-      </div>
+      </div> */}
+         <IIITRChatbot />
     </section>
   );
 }
