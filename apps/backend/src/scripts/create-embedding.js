@@ -3,14 +3,10 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { connectToMongoDB } from "../lib/mongodb.js";
-import { GOOGLE_AI_API_KEY, MONGODB_ATLAS_URI } from "../config/env.config.js";
+import { GOOGLE_AI_API_KEY } from "../config/env.config.js";
+import customStudentInfoSplitter from "../utilities/custom-student-splitter.js";
 
 const testSplitterConfig = {
-  student_info: {
-    chunkSize: 500,
-    chunkOverlap: 50,
-    separators: ["\n\n", "\n", " ", ""],
-  },
   general_info: {
     chunkSize: 1000,
     chunkOverlap: 100,
@@ -18,8 +14,7 @@ const testSplitterConfig = {
   },
 };
 
-// This function will read all the documents from the _assets/docs directory and create embeddings for each document.
-async function createEmbendings() {
+async function createEmbeddings() {
   const client = await connectToMongoDB();
 
   const dbName = "iiitr-insights";
@@ -35,8 +30,18 @@ async function createEmbendings() {
       document = await fsp.readFile(`${docs_dir}/${fileName}`, "utf8");
       console.log(`Vectorizing ${fileName}`);
 
-      const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", testSplitterConfig[collectionName]);
-      const output = await splitter.createDocuments([document]);
+      let output;
+      if (fileName == "student-info.md") {
+        output = customStudentInfoSplitter(document).map((text) => ({
+          pageContent: text,
+        }));
+      } else {
+        const splitter = RecursiveCharacterTextSplitter.fromLanguage(
+          "markdown",
+          testSplitterConfig[collectionName]
+        );
+        output = await splitter.createDocuments([document]);
+      }
 
       await MongoDBAtlasVectorSearch.fromDocuments(
         output,
@@ -58,4 +63,4 @@ async function createEmbendings() {
   await client.close();
 }
 
-export default createEmbendings;
+export default createEmbeddings;

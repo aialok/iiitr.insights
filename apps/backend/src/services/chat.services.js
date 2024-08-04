@@ -37,7 +37,7 @@ class ChatService {
     );
 
 
-    const response = await this.model.stream([
+    const response = await this.model.invoke([
       new SystemMessage({
         content: [
           {
@@ -62,10 +62,7 @@ class ChatService {
         ],
       }),
     ]);
-
-    for await (const chunk of response) {
-      console.log(chunk.content);
-    }
+    console.log(response);
     await this.chatHistory.addMessage(
       new HumanMessage({
         content: [
