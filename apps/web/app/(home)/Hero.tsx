@@ -38,7 +38,7 @@ function Hero() {
               as="button"
               className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
             >
-              <Link href="/signin" className="flex items-center gap-1 ">
+              <Link href="/chat" className="flex items-center gap-1 ">
                 Chat Now
                 <div className="flex overflow-hidden relative justify-center items-center ml-1 w-5 h-5">
                   <ArrowUpRight className="absolute transition-all duration-500 group-hover:translate-x-4 group-hover:-translate-y-5" />
