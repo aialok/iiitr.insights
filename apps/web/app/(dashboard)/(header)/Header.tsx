@@ -1,22 +1,13 @@
-import GradualSpacing from "@/components/magicui/gradual-spacing";
 import React from "react";
 
-function Header({ text }: { text: string }) {
+function Header() {
   return (
-    <div className="text-white pt-10">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <div className="text-4xl font-bold text-white">iiitr.insights</div>
-        </div>
-        <div className="flex items-center">
-          <div className="flex items-center">
-            <div className="ml-2 text-xl">Sign Out</div>
-          </div>
-        </div>
-      </div>
-      <div className="chat-slogal mt-20">
-      </div>
-    </div>
+    <header className="p-4 flex justify-between items-center border-b border-gray-800">
+      <h1 className="text-xl font-semibold">iiitr.insights.ai</h1>
+      <button className="text-gray-400 hover:text-white transition-colors">
+        Sign Out
+      </button>
+    </header>
   );
 }
 

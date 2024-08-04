@@ -24,7 +24,7 @@ function Hero() {
             </Link>
           </HoverBorderGradient>
         </div>
-        <div className="text-6xl sm:text-9xl font-bold z-20 bg-clip-text text-transparent bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] text-transparent   py-8 ">
+        <div className="text-6xl sm:text-9xl font-bold z-20 text-transparent bg-gradient-to-r from-slate-300 via-slate-400 to-slate-500 bg-clip-text py-8 ">
           iiitr.insights
         </div>
         <div className="h-16 sm:h-24">
