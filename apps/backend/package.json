@@ -17,6 +17,7 @@
   "author": "Alok Gupta",
   "license": "ISC",
   "dependencies": {
+    "@langchain/core": "^0.2.20",
     "@langchain/google-genai": "^0.0.23",
     "@langchain/mongodb": "^0.0.4",
     "express": "^4.19.2",

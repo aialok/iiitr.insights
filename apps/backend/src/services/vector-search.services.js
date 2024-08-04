@@ -12,12 +12,12 @@ class VectorSearchService {
     try {
       console.log("Searching vectors");
       const client = await this.mongoClient;
-      console.log(queryString)
+      console.log(queryString);
       const embeddingModel = new GoogleGenerativeAIEmbeddings({
         model: "text-embedding-004",
         apiKey: GOOGLE_AI_API_KEY,
       });
-      
+
       const dbName = "iiitr-insights";
       const collectionName = queryType;
       const collection = await client.db(dbName).collection(collectionName);
@@ -39,8 +39,6 @@ class VectorSearchService {
 
       const retrieverOutput = await retriever.invoke(queryString);
 
-      console.log(retrieverOutput); 
-
       const data = retrieverOutput.map((result) => {
         return {
           text: result.pageContent,
@@ -48,10 +46,16 @@ class VectorSearchService {
         };
       });
 
-      return data;
+      // merge the data with the context
+      let context = "";
+      data.forEach((element) => {
+        context += element.text + " ";
+      });
+
+      return context;
     } catch (error) {
-        console.error("Failed to search vectors", error);
-        throw new Error("Failed to search vectors");
+      console.error("Failed to search vectors", error);
+      throw new Error("Failed to search vectors");
     }
   }
 }
