@@ -32,7 +32,7 @@ class VectorSearchService {
       const retriever = vectorStore.asRetriever({
         searchType: "mmr",
         searchKwargs: {
-          fetchK: 5,
+          fetchK: 2,
           lambda: 0.6,
         },
       });
@@ -49,7 +49,7 @@ class VectorSearchService {
       // merge the data with the context
       let context = "";
       data.forEach((element) => {
-        context += element.text + " ";
+        context += "\n" + element.text + "\n";
       });
 
       return context;
