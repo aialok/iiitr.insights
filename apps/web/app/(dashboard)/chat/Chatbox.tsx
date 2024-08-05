@@ -9,13 +9,11 @@ import GradualSpacing from "@/components/magicui/gradual-spacing";
 import Header from "../(header)/Header";
 import axios from "axios";
 
-const message = `
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque incidunt, optio blanditiis quasi temporibus magnam excepturi? Minima deserunt, quae delectus inventore illum odit aspernatur tenetur nam voluptates veritatis quibusdam distinctio quam quo magnam eum adipisci quasi laudantium debitis unde. Nulla unde nihil blanditiis ipsa aliquam, mollitia, aperiam excepturi sequi magni vitae ad fugiat aut, quos molestias quia tempore? Beatae, omnis nesciunt! Omnis, aperiam placeat quaerat sint hic laudantium!`;
-
 const IIITRChatbot = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [documentType, setDocumentType] = useState("general-info");
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +32,7 @@ const IIITRChatbot = () => {
           {
             text: input,
             type: "human",
+            documentType: documentType
           }
         );
         console.log(response);
@@ -52,7 +51,7 @@ const IIITRChatbot = () => {
   };
 
   return (
-    <div className="w-full h-screen  text-white font-sans">
+    <div className="w-full h-screen text-white font-sans">
       <Header />
 
       <main
@@ -64,7 +63,7 @@ const IIITRChatbot = () => {
         }}
       >
         <GradualSpacing
-          className="font-display text-center text-xl font-bold tracking-[-0.1em]  text-black dark:text-white md:text-5xl md:leading-[5rem]  max-sm:hidden "
+          className="font-display text-center text-xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-5xl md:leading-[5rem] max-sm:hidden"
           text={"Ask me Anything about IIIT Ranchi"}
         />
 
@@ -95,15 +94,31 @@ const IIITRChatbot = () => {
         <div ref={messagesEndRef} />
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-gray-900 border-t border-gray-800 w-full sm:w-[55%] mx-auto rounded-md ">
+      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-gray-900 border-t border-gray-800 w-full sm:w-[55%] mx-auto rounded-md">
         <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about IIIT Ranchi..."
-            className="flex-grow bg-gray-800 border border-gray-700 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500 transition-colors"
-          />
+          <div className="flex-grow flex items-center bg-gray-800 border border-gray-700 rounded-full overflow-hidden">
+            <select 
+              value={documentType}
+              onChange={(e) => setDocumentType(e.target.value)}
+              className="bg-gray-800 text-white px-2 py-2 focus:outline-none"
+            >
+              <option value="general-info">General Info</option>
+              <option value="student-info">Student Info</option>
+              <option value="faculty-info">Faculty Info</option>
+              <option value="alumni-info">Alumni Info</option>
+              <option value="placement-info">Placement Info</option>
+              <option value="cultural-society-info">Cultural Society Info</option>
+              <option value="technical-club-info">Technical Club Info</option>
+              <option value="student-affair-info">Student Affairs Info</option>
+            </select>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Ask about IIIT Ranchi..."
+              className="flex-grow bg-transparent px-4 py-2 focus:outline-none"
+            />
+          </div>
           <button
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 rounded-full p-2 transition-colors"
