@@ -4,4 +4,9 @@
 
 Welcome to **IIITR Insights**, your all-in-one destination for everything related to IIIT Ranchi! Whether you are a new student, a current student, or someone interested in learning more about IIIT Ranchi, this AI-powered chatbot is here to help you with information ranging from placements and academics to technical and cultural clubs, administration, and student affairs.
 
+## Architecture:
+
+![Architecture](https://github.com/user-attachments/assets/21d74b7e-9059-4376-a4a2-ee5c6f59c10f)
+
+
 Enjoy your time at IIIT Ranchi with **IIITR Insights**!
