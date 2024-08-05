@@ -16,24 +16,26 @@ export const getChatHistory = async (req, res) => {
 };
 
 export const addChatMessage = async (req, res) => {
-    try {
-      const { type, text } = req.body;
-      if (!type || !text || (type !== 'human' && type !== 'ai')) {
-        return res.status(400).json({
-          status: "error",
-          message: "Invalid message format. Expected {type: 'human'|'ai', text: string}",
-        });
-      }
-      await chatService.addChatMessage({ type, text });
-      return res.status(200).json({
-        status: "ok",
-        message: "Message added successfully",
-      });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({
+  try {
+    const { type, text } = req.body;
+    if (!type || !text || (type !== "human" && type !== "ai")) {
+      return res.status(400).json({
         status: "error",
-        message: "Failed to add message",
+        message:
+          "Invalid message format. Expected {type: 'human'|'ai', text: string}",
       });
     }
-  };
+    const response = await chatService.addChatMessage({ type, text });
+    return res.status(200).json({
+      status: "ok",
+      message: "Message added successfully",
+      data: response,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: "error",
+      message: "Failed to add message",
+    });
+  }
+};
