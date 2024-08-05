@@ -18,7 +18,6 @@ function Hero() {
             <AnimatedGradientTextDemo
               element={<Github />}
               text={"Give a star on GitHub "}
-              className="sm:text-2xl text-lg"
             />
           </Link>
         </div>

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-function page({params}: {params: {chatid: string}}) {
-
-  return <div className="text-white">
-  </div>;
+function page() {
+  return (
+    <div></div>
+  )
 }
 
-export default page;
+export default page
