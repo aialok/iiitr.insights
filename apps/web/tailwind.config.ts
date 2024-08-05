@@ -15,11 +15,29 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        meteor: "meteor 5s linear infinite",
+        gradient: "gradient 8s linear infinite",
+      },
+      keyframes: {
+        meteor: {
+          "0%": { transform: "rotate(240deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(240deg) translateX(-850px)",
+            opacity: "0",
+          },
+        },
+        gradient: {
+          to: {
+            backgroundPosition: "var(--bg-size) 0",
+          },
+        },
+      },
+    },
   },
-  plugins: [
-    addVariablesForColors,
-  ],
+  plugins: [addVariablesForColors],
 };
 
 function addVariablesForColors({ addBase, theme }: any) {

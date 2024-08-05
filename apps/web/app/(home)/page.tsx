@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import NavbarComponent from "./Navbar";
 import Hero from "./Hero";

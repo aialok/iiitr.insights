@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Meteors from "../../components/magicui/metoers";
 
 const BackgroundWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -15,7 +16,11 @@ const BackgroundWrapper = ({ children }: { children: React.ReactNode }) => {
           backgroundPosition: "0 0, 50px 50px",
         }}
       >
-        {children}
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg  md:shadow-xl">
+          <Meteors number={50} />
+
+          {children}
+        </div>
       </div>
     </div>
   );

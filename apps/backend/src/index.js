@@ -1,10 +1,12 @@
 import express from "express";
 import createEmbendings from "./scripts/create-embedding.js";
 import apiRoutes from "./routes/index.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", async (req, res) => {
   res.send("Hello World");

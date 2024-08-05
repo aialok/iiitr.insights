@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, TrashIcon } from "lucide-react";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import Header from "../(header)/Header";
+import axios from "axios";
 
 const message = `
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque incidunt, optio blanditiis quasi temporibus magnam excepturi? Minima deserunt, quae delectus inventore illum odit aspernatur tenetur nam voluptates veritatis quibusdam distinctio quam quo magnam eum adipisci quasi laudantium debitis unde. Nulla unde nihil blanditiis ipsa aliquam, mollitia, aperiam excepturi sequi magni vitae ad fugiat aut, quos molestias quia tempore? Beatae, omnis nesciunt! Omnis, aperiam placeat quaerat sint hic laudantium!`;
@@ -21,16 +22,32 @@ const IIITRChatbot = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, { type: "user", content: input }]);
-      setInput("");
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        setMessages((msgs) => [...msgs, { type: "bot", content: message }]);
-      }, 2000);
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      if (input.trim()) {
+        setMessages([...messages, { type: "user", content: input }]);
+        setInput("");
+        setIsTyping(true);
+        const response = await axios.post(
+          "http://localhost:3000/api/v1/chat-message",
+          {
+            text: input,
+            type: "human",
+          }
+        );
+        console.log(response);
+        if (response.data) {
+          setMessages((msgs) => [
+            ...msgs,
+            { type: "bot", content: response.data.data.kwargs.content },
+          ]);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsTyping(false);
     }
   };
 
@@ -72,13 +89,13 @@ const IIITRChatbot = () => {
         </AnimatePresence>
 
         {isTyping && (
-          <div className="text-gray-400 animate-pulse">IIIT is thinking...</div>
+          <div className="text-gray-400 animate-pulse">searching...</div>
         )}
 
         <div ref={messagesEndRef} />
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-gray-900 border-t border-gray-800 w-full sm:w-[50%] mx-auto rounded-md ">
+      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-gray-900 border-t border-gray-800 w-full sm:w-[55%] mx-auto rounded-md ">
         <form onSubmit={handleSubmit} className="flex items-center space-x-2">
           <input
             type="text"

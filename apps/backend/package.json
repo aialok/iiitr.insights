@@ -20,6 +20,7 @@
     "@langchain/core": "^0.2.20",
     "@langchain/google-genai": "^0.0.23",
     "@langchain/mongodb": "^0.0.4",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "langchain": "^0.2.12",
     "mongodb": "^6.8.0"
