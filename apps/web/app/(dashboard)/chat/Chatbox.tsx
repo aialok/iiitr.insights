@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface Message {
   type: "user" | "bot";
@@ -49,12 +49,13 @@ const Chatbox: React.FC<ChatboxProps> = ({
             >
               <ReactMarkdown
                 components={{
-                  code({ node, inline, className, children, ...props }) {
+                  code({ node, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
-                    return !inline && match ? (
+                    return  match ? (
                       <div className="relative mt-2 mb-2">
                         <SyntaxHighlighter
-                          style={vscDarkPlus}
+                          // @ts-ignore
+                          style={dark}
                           language={match[1]}
                           PreTag="div"
                           {...props}
