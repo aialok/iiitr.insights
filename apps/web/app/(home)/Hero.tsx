@@ -1,4 +1,3 @@
-
 import { Github } from "@/components/icons/icons";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import React from "react";
@@ -12,20 +11,16 @@ function Hero() {
     <>
       <div className="homepage flex flex-col items-center relative w-[80%] h-[50vh]">
         <div className="m-10 flex justify-center text-center">
-          {/* <HoverBorderGradient
-            containerClassName="rounded-full"
-            as="button"
-            className="dark:bg-gray-900  bg-white text-black dark:text-white flex items-center space-x-2"
-          > */}
-            {/* <Github /> */}
-            <Link
-              href="https://github.com/aialok/iiitr.insights"
-              className="flex items-center "
-            >
-              {/* Give a star on GitHub */}
-              <AnimatedGradientTextDemo text={"Give a star on GitHub "} />
-            </Link>
-          {/* </HoverBorderGradient> */}
+          <Link
+            href="https://github.com/aialok/iiitr.insights"
+            className="flex items-center "
+          >
+            <AnimatedGradientTextDemo
+              element={<Github />}
+              text={"Give a star on GitHub "}
+              className="sm:text-2xl text-lg"
+            />
+          </Link>
         </div>
         <div className="text-6xl sm:text-9xl font-bold z-20 text-transparent bg-gradient-to-r from-slate-300 via-slate-400 to-slate-500 bg-clip-text py-8 ">
           iiitr.insights
